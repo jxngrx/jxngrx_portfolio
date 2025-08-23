@@ -9,7 +9,7 @@ import {
   getProjectCaseStudyBySlug,
   getProjectCaseStudySlugs,
   getProjectNavigation,
-  getRelatedProjectCaseStudies,
+//   getRelatedProjectCaseStudies,
 } from '@/lib/project';
 import { Metadata } from 'next';
 import { Link } from 'next-view-transitions';
