@@ -75,7 +75,7 @@ export default async function ProjectCaseStudyPage({
   }
 
   const navigation = await getProjectNavigation(slug);
-  const relatedProjects = await getRelatedProjectCaseStudies(slug, 2);
+//   const relatedProjects = await getRelatedProjectCaseStudies(slug, 2);
 
   return (
     <Container className="py-16">

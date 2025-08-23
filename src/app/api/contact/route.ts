@@ -63,7 +63,7 @@ function checkRateLimit(clientIP: string): {
     remaining: RATE_LIMIT_MAX_REQUESTS - clientData.count,
   };
 }
-
+ //@ts-ignore
 async function sendToTelegram(data: any) {
     const telegramUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
     const agent = new https.Agent({ family: 4 });
