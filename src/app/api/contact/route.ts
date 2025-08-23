@@ -96,8 +96,8 @@ async function sendToTelegram(data: {
         httpsAgent: agent,
       });
       if (res.status === 200 && res.data.ok) return true;
-    } catch (err: any) {
-      console.warn(`Attempt ${i + 1} failed`, err.message);
+    } catch (err) {
+      console.warn(`Attempt ${i + 1} failed`, err);
       await new Promise((r) => setTimeout(r, 1000)); // wait 1s before retry
     }
   }
