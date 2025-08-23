@@ -63,13 +63,17 @@ function checkRateLimit(clientIP: string): {
     remaining: RATE_LIMIT_MAX_REQUESTS - clientData.count,
   };
 }
- //@ts-ignore
-async function sendToTelegram(data: any) {
-    const telegramUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
-    const agent = new https.Agent({ family: 4 });
-    const payload = {
-      chat_id: process.env.TELEGRAM_CHAT_ID,
-      text: `
+async function sendToTelegram(data: {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}) {
+  const telegramUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+  const agent = new https.Agent({ family: 4 });
+  const payload = {
+    chat_id: process.env.TELEGRAM_CHAT_ID,
+    text: `
   🔔 *New Contact Form Submission*
 
   👤 *Name:* ${data.name}
@@ -81,22 +85,25 @@ async function sendToTelegram(data: any) {
   ⏰ *Submitted:* ${new Date().toISOString()}
   📍 *Timezone:* ${Intl.DateTimeFormat().resolvedOptions().timeZone}
       `.trim(),
-      parse_mode: 'Markdown',
-    };
+    parse_mode: 'Markdown',
+  };
 
-    for (let i = 0; i < 3; i++) { // retry 3 times
-      try {
-        const res = await axios.post(telegramUrl, payload, { timeout: 10000, httpsAgent: agent, });
-        if (res.status === 200 && res.data.ok) return true;
-      } catch (err: any) {
-        console.warn(`Attempt ${i + 1} failed`, err.message);
-        await new Promise(r => setTimeout(r, 1000)); // wait 1s before retry
-      }
+  for (let i = 0; i < 3; i++) {
+    // retry 3 times
+    try {
+      const res = await axios.post(telegramUrl, payload, {
+        timeout: 10000,
+        httpsAgent: agent,
+      });
+      if (res.status === 200 && res.data.ok) return true;
+    } catch (err: any) {
+      console.warn(`Attempt ${i + 1} failed`, err.message);
+      await new Promise((r) => setTimeout(r, 1000)); // wait 1s before retry
     }
-
-    return false;
   }
 
+  return false;
+}
 
 export async function POST(request: NextRequest) {
   try {
