@@ -103,7 +103,7 @@ export default async function ProjectCaseStudyPage({
         />
 
         {/* Related Projects */}
-        {relatedProjects.length > 0 && (
+        {/* {relatedProjects.length > 0 && (
           <div className="space-y-6">
             <Separator />
             <div className="space-y-6">
@@ -164,7 +164,7 @@ export default async function ProjectCaseStudyPage({
               </div>
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Back to Projects CTA */}
         <div className="text-center">

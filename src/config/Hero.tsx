@@ -3,18 +3,18 @@ import LinkedIn from '@/components/svgs/LinkedIn';
 import Mail from '@/components/svgs/Mail';
 import X from '@/components/svgs/X';
 import Bun from '@/components/technologies/Bun';
+import Firebase from '@/components/technologies/Firebase';
+import Git from '@/components/technologies/Git';
 import JavaScript from '@/components/technologies/JavaScript';
+import Linux from '@/components/technologies/Linux';
 import MongoDB from '@/components/technologies/MongoDB';
 import NextJs from '@/components/technologies/NextJs';
 import NodeJs from '@/components/technologies/NodeJs';
 import PostgreSQL from '@/components/technologies/PostgreSQL';
 import Prisma from '@/components/technologies/Prisma';
 import ReactIcon from '@/components/technologies/ReactIcon';
-import TypeScript from '@/components/technologies/TypeScript';
 import Tailwind from '@/components/technologies/Tailwind';
-import Firebase from '@/components/technologies/Firebase';
-import Git from '@/components/technologies/Git';
-import Linux from '@/components/technologies/Linux';
+import TypeScript from '@/components/technologies/TypeScript';
 
 // Component mapping for skills
 export const skillComponents = {
@@ -36,8 +36,8 @@ export const skillComponents = {
 export const heroConfig = {
   // Personal Information
   name: 'Shubham Jangra',
-  title: 'Full Stack Developer | Open Source Contributor',
-  avatar: '/assets/shubham.png', // replace with your actual avatar
+  title: 'Full Stack Developer | App Developer | Open Source Contributor',
+  avatar: '/assets/logo.png', // replace with your actual avatar
 
   // Skills Configuration
   skills: [
@@ -49,6 +49,11 @@ export const heroConfig = {
     {
       name: 'React',
       href: 'https://react.dev/',
+      component: 'ReactIcon',
+    },
+    {
+      name: 'React Native',
+      href: 'https://reactnative.dev/',
       component: 'ReactIcon',
     },
     {
@@ -77,8 +82,8 @@ export const heroConfig = {
   description: {
     template:
       "I'm a <b>Full Stack Developer</b> who loves building scalable products that solve real-world problems. " +
-      "I work with {skills:0}, {skills:1}, {skills:2}, {skills:3}, and databases like {skills:4}/{skills:5}. " +
-      "Currently pursuing <b>B.Tech CSE</b> (MDU, 2026) and working as a <b>Software Development Engineer @ Suffai</b>.",
+      'I work with {skills:0}, {skills:1}, {skills:2}, {skills:3}, and databases like {skills:4}/{skills:5}. ' +
+      'Currently pursuing <b>B.Tech CSE</b> (MDU, 2026) and working as a <b>Software Development Engineer @ Suffai</b>.',
   },
 
   // Buttons Configuration
@@ -102,17 +107,17 @@ export const heroConfig = {
 export const socialLinks = [
   {
     name: 'X',
-    href: 'https://x.com/typical_techno',
+    href: 'https://x.com/jxngrx',
     icon: <X />,
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/in/shubhamjangradev',
+    href: 'https://linkedin.com/in/jxngrx',
     icon: <LinkedIn />,
   },
   {
     name: 'Github',
-    href: 'https://github.com/typical-techno',
+    href: 'https://github.com/jxngrx',
     icon: <Github />,
   },
   {
@@ -122,7 +127,7 @@ export const socialLinks = [
   },
   {
     name: 'Portfolio',
-    href: 'https://shubhamjangra.vercel.app',
+    href: 'https://jxngrx.vercel.app',
     icon: <Github />, // you can replace with a custom "Globe" or "Portfolio" icon
   },
 ];

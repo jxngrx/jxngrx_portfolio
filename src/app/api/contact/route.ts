@@ -1,3 +1,5 @@
+import axios from 'axios';
+import https from 'https';
 import { NextRequest, NextResponse } from 'next/server';
 import * as z from 'zod';
 
@@ -62,66 +64,39 @@ function checkRateLimit(clientIP: string): {
   };
 }
 
-async function sendToTelegram(data: {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-}): Promise<boolean> {
-  const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
-  const telegramChatId = process.env.TELEGRAM_CHAT_ID;
+async function sendToTelegram(data: any) {
+    const telegramUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+    const agent = new https.Agent({ family: 4 });
+    const payload = {
+      chat_id: process.env.TELEGRAM_CHAT_ID,
+      text: `
+  🔔 *New Contact Form Submission*
 
-  if (!telegramToken) {
-    console.error('TELEGRAM_BOT_TOKEN not configured');
-    return false;
-  }
+  👤 *Name:* ${data.name}
+  📧 *Email:* ${data.email}
+  📱 *Phone:* ${data.phone}
 
-  if (!telegramChatId) {
-    console.error('TELEGRAM_CHAT_ID not configured');
-    return false;
-  }
+  💬 *Message:* ${data.message}
 
-  const message = `
-🔔 *New Contact Form Submission*
+  ⏰ *Submitted:* ${new Date().toISOString()}
+  📍 *Timezone:* ${Intl.DateTimeFormat().resolvedOptions().timeZone}
+      `.trim(),
+      parse_mode: 'Markdown',
+    };
 
-👤 *Name:* ${data.name.trim()}
-📧 *Email:* ${data.email.trim()}
-📱 *Phone:* ${data.phone.trim()}
-
-💬 *Message:*
-${data.message.trim()}
-
-⏰ *Submitted:* ${new Date().toISOString()}
-📍 *Timezone:* ${Intl.DateTimeFormat().resolvedOptions().timeZone}
-  `.trim();
-
-  try {
-    const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
-
-    const response = await fetch(telegramUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chat_id: telegramChatId,
-        text: message,
-        parse_mode: 'Markdown',
-      }),
-    });
-
-    if (response.ok) {
-      return true;
-    } else {
-      const errorText = await response.text();
-      console.error('Failed to send to Telegram:', errorText);
-      return false;
+    for (let i = 0; i < 3; i++) { // retry 3 times
+      try {
+        const res = await axios.post(telegramUrl, payload, { timeout: 10000, httpsAgent: agent, });
+        if (res.status === 200 && res.data.ok) return true;
+      } catch (err: any) {
+        console.warn(`Attempt ${i + 1} failed`, err.message);
+        await new Promise(r => setTimeout(r, 1000)); // wait 1s before retry
+      }
     }
-  } catch (error) {
-    console.error('Error sending to Telegram:', error);
+
     return false;
   }
-}
+
 
 export async function POST(request: NextRequest) {
   try {

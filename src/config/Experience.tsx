@@ -1,21 +1,17 @@
-import AWS from '@/components/technologies/AWS';
-import Bun from '@/components/technologies/Bun';
+
 import ExpressJs from '@/components/technologies/ExpressJs';
 import JavaScript from '@/components/technologies/JavaScript';
 import MongoDB from '@/components/technologies/MongoDB';
-import NextJs from '@/components/technologies/NextJs';
 import NodeJs from '@/components/technologies/NodeJs';
 import PostgreSQL from '@/components/technologies/PostgreSQL';
 import Postman from '@/components/technologies/Postman';
-import Prisma from '@/components/technologies/Prisma';
 import ReactIcon from '@/components/technologies/ReactIcon';
 import TypeScript from '@/components/technologies/TypeScript';
 import Vercel from '@/components/technologies/Vercel';
-import Figma from '@/components/technologies/Figma';
-import Tailwind from '@/components/technologies/Tailwind';
 import Firebase from '@/components/technologies/Firebase';
 import Git from '@/components/technologies/Git';
 import Linux from '@/components/technologies/Linux';
+import Python from '@/components/technologies/Python';
 
 export interface Technology {
   name: string;
@@ -112,7 +108,7 @@ export const experiences: Experience[] = [
     technologies: [
       { name: 'Linux', href: 'https://kernel.org/', icon: <Linux /> },
       { name: 'PostgreSQL', href: 'https://postgresql.org/', icon: <PostgreSQL /> },
-      { name: 'Python', href: 'https://python.org/', icon: <JavaScript /> }, // you may create a Python icon component
+      { name: 'Python', href: 'https://python.org/', icon: <Python /> }, // you may create a Python icon component
       { name: 'Java', href: 'https://www.java.com/', icon: <JavaScript /> }, // placeholder until you add Java icon
       { name: 'Postman', href: 'https://postman.com/', icon: <Postman /> },
     ],
