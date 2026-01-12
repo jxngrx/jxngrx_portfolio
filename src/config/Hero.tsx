@@ -108,21 +108,25 @@ export const socialLinks = [
   {
     name: 'X',
     href: 'https://x.com/jxngrx',
+    username: 'jxngrx',
     icon: <X />,
   },
   {
     name: 'LinkedIn',
     href: 'https://linkedin.com/in/jxngrx',
+    username: 'jxngrx',
     icon: <LinkedIn />,
   },
   {
     name: 'Github',
     href: 'https://github.com/jxngrx',
+    username: 'jxngrx',
     icon: <Github />,
   },
   {
     name: 'Email',
     href: 'mailto:shubhamjangrartk@gmail.com',
+    username: 'shubhamjangrartk',
     icon: <Mail />,
   },
 //   {

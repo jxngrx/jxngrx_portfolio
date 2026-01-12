@@ -11,7 +11,7 @@ import Vercel from '@/components/technologies/Vercel';
 import Firebase from '@/components/technologies/Firebase';
 import Git from '@/components/technologies/Git';
 import Linux from '@/components/technologies/Linux';
-import Python from '@/components/technologies/Python';
+import Expo from '@/components/technologies/Expo';
 
 export interface Technology {
   name: string;
@@ -81,6 +81,8 @@ export const experiences: Experience[] = [
       { name: 'React', href: 'https://react.dev/', icon: <ReactIcon /> },
       { name: 'React Native', href: 'https://reactnative.dev/', icon: <ReactIcon /> },
       { name: 'TypeScript', href: 'https://typescriptlang.org/', icon: <TypeScript /> },
+      { name: 'Expo', href: 'https://expo.dev/', icon: <Expo /> },
+      { name: 'JavaScript', href: 'https://javascript.com/', icon: <JavaScript /> },
       { name: 'Node.js', href: 'https://nodejs.org/', icon: <NodeJs /> },
       { name: 'MongoDB', href: 'https://mongodb.com/', icon: <MongoDB /> },
       { name: 'PostgreSQL', href: 'https://postgresql.org/', icon: <PostgreSQL /> },

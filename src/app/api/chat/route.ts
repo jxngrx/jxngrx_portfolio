@@ -13,8 +13,9 @@ const chatSchema = z.object({
   history: z
     .array(
       z.object({
-        role: z.enum(['user', 'model']),
-        parts: z.array(z.object({ text: z.string() })),
+        role: z.enum(['user', 'model', 'assistant']),
+        parts: z.array(z.object({ text: z.string() })).optional(),
+        content: z.string().optional(),
       }),
     )
     .optional()
@@ -89,9 +90,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.OPENROUTER_API_KEY;
     if (!apiKey) {
-      console.error('GEMINI_API_KEY not configured');
+      console.error('OPENROUTER_API_KEY not configured');
       return NextResponse.json(
         { error: 'AI service not configured' },
         { status: 500 },
@@ -101,47 +102,65 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = chatSchema.parse(body);
 
-    // Prepare the request body for Gemini REST API
-    const requestBody = {
-      contents: [
-        {
-          parts: [{ text: systemPrompt }],
-          role: 'user',
-        },
-        {
-          parts: [
-            { text: 'I understand. I will act as your portfolio assistant.' },
-          ],
-          role: 'model',
-        },
-        // Add conversation history
-        ...validatedData.history,
-        // Add current message
-        {
-          parts: [{ text: validatedData.message }],
-          role: 'user',
-        },
-      ],
-      generationConfig: {
-        maxOutputTokens: 512,
-        temperature: 0.7,
-        topP: 0.8,
-        topK: 40,
-      },
+    // Convert history from Gemini format to OpenAI format
+    const convertHistoryToOpenAIFormat = (
+      history: Array<{ role: string; parts?: Array<{ text: string }>; content?: string }>
+    ) => {
+      return history.map((msg) => {
+        // Handle both Gemini format (parts) and OpenAI format (content)
+        const content = msg.content || msg.parts?.[0]?.text || '';
+        const role = msg.role === 'model' ? 'assistant' : msg.role;
+        return {
+          role: role as 'system' | 'user' | 'assistant',
+          content,
+        };
+      });
     };
 
-    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:streamGenerateContent?alt=sse&key=${apiKey}`;
+    // Prepare the request body for OpenRouter API (OpenAI-compatible format)
+    const messages = [
+      {
+        role: 'system' as const,
+        content: systemPrompt,
+      },
+      {
+        role: 'assistant' as const,
+        content: 'I understand. I will act as your portfolio assistant.',
+      },
+      // Add conversation history (converted to OpenAI format)
+      ...convertHistoryToOpenAIFormat(validatedData.history),
+      // Add current message
+      {
+        role: 'user' as const,
+        content: validatedData.message,
+      },
+    ];
 
-    const response = await fetch(geminiUrl, {
+    const requestBody = {
+      model: 'openai/gpt-oss-20b',
+      messages,
+      stream: true,
+      temperature: 0.7,
+      max_tokens: 512,
+    };
+
+    const openRouterUrl = 'https://openrouter.ai/api/v1/chat/completions';
+
+    const response = await fetch(openRouterUrl, {
       method: 'POST',
       headers: {
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
+        'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'https://jxngrx.com',
+        'X-Title': 'Shubham Jangra Portfolio',
       },
       body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {
-      throw new Error(`Gemini API error: ${response.status}`);
+      const errorText = await response.text();
+      console.error('OpenRouter API error:', response.status, errorText);
+      throw new Error(`OpenRouter API error: ${response.status}`);
     }
 
     const encoder = new TextEncoder();
@@ -152,15 +171,24 @@ export async function POST(request: NextRequest) {
           const parser = createParser({
             onEvent: (event) => {
               try {
+                if (event.data === '[DONE]') {
+                  controller.enqueue(encoder.encode('data: {"done": true}\n\n'));
+                  return;
+                }
+
                 const data = JSON.parse(event.data);
-                const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                // OpenRouter/OpenAI streaming format: choices[0].delta.content
+                const text = data?.choices?.[0]?.delta?.content;
                 if (text) {
                   // Send as Server-Sent Event format
                   const sseData = `data: ${JSON.stringify({ text })}\n\n`;
                   controller.enqueue(encoder.encode(sseData));
                 }
               } catch (parseError) {
-                console.error('Parse error:', parseError);
+                // Ignore parse errors for incomplete SSE chunks
+                if (event.data !== '[DONE]') {
+                  console.error('Parse error:', parseError, event.data);
+                }
               }
             },
           });
