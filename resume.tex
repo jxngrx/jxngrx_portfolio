@@ -1,0 +1,189 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{multicol}
+
+% Page layout
+\geometry{
+    left=1.2cm,
+    right=1.2cm,
+    top=1.5cm,
+    bottom=1.7cm
+}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+
+% Colors and section formatting
+\definecolor{darkblue}{RGB}{0, 51, 102}
+\titleformat{\section}
+  {\large\bfseries\color{darkblue}}
+  {}
+  {0em}
+  {}
+  [\titlerule]
+
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+
+% Global bullet formatting
+\setlist[itemize]{noitemsep, topsep=0pt, left=0pt}
+
+\begin{document}
+
+% ===== HEADER =====
+\begin{center}
+    {\Huge \textbf{Shubham Jangra}} \\
+    \vspace{1mm}
+    \small{
+        \href{mailto:work@jxngrx.com}{work@jxngrx.com} \textbullet{}
+        +91 9992990399 \textbullet{} Rohtak, Haryana \\
+        \href{https://linkedin.com/in/jxngrx}{LinkedIn: jxngrx} \textbullet{}
+        \href{https://jxngrx.com}{jxngrx.com} \textbullet{}
+        \href{https://github.com/jxngrx}{GitHub: jxngrx} \textbullet{}
+        \href{https://leetcode.com/jxngrx}{LeetCode: jxngrx}
+    }
+\end{center}
+
+% ===== EXPERIENCE =====
+\section*{Experience}
+
+
+\textbf{Backend Developer (Freelance)} \\
+\textit{Advan Drive} \hfill Dec 2025 -- Present  -- Remote
+% \begin{itemize}
+%     \item Architected a strongly typed \textbf{TypeScript} backend using \textbf{Node.js, Express, and MongoDB}, following a clean layered architecture.
+%     \item Implemented social authentication (Google, Apple, Facebook) with secure token verification, JWT-based sessions, and role-aware request handling.
+%     \item Designed a geo-aware presence and event lifecycle system using Google Place IDs, radius-based matching (\textbf{50–500m}), and TTL-based data expiration.
+%     \item Built privacy-first APIs for discovery, connections, and event-scoped chats, enforcing access control, rate limiting, and abuse prevention.
+% \end{itemize}
+
+\begin{itemize}
+    \item Built a strongly typed \textbf{TypeScript} backend with \textbf{Node.js, Express, MongoDB} using clean layered architecture.
+    \item Implemented social auth (Google, Apple, Facebook) with token verification, JWT sessions, and role-based access.
+    \item Designed geo-aware presence and event lifecycle using Place IDs, \textbf{50--500m} radius matching, and TTL expiry.
+    \item Developed privacy-first APIs for discovery and chats with access control, rate limiting, and abuse protection.
+    \item Modeled scalable schemas and indexes to support high-read discovery flows and low-latency queries.
+\end{itemize}
+
+
+\textbf{Software Development Engineer (Intern)} \\
+\textit{Suffai} \hfill May 2024 -- Present | Remote
+% \begin{itemize}
+%     \item Migrated the React Native app to \textbf{Expo} and built a complete \textbf{dev $\rightarrow$ test $\rightarrow$ prod} release pipeline with OTA updates via Expo Updates and Notifications.
+%     \item Took the product from \textbf{MVP to production}, independently owning mobile development for an app now serving \textbf{10K+ active users}.
+%     \item Built and optimized \textbf{core backend business logic} including pricing calculations, cart flow, order lifecycle, and location-based operations.
+%     \item Led end-to-end frontend execution—\textbf{UI/UX redesign, animations, cart flow}—and enhanced admin dashboards for orders, customers, and transactions, improving operational efficiency.
+% \end{itemize}
+
+\begin{itemize}
+    \item Migrated the React Native app to \textbf{Expo} with a full \textbf{dev--test--prod} pipeline and OTA updates.
+    \item Took the product from \textbf{MVP to production}, independently owning mobile development for \textbf{10K+ users}.
+    \item Built core backend logic for pricing, cart flow, order lifecycle, and location-based operations.
+    \item Led UI/UX redesign, animations, cart flow, and improved admin dashboards for orders and transactions.
+    \item Integrated notifications, analytics, and monitoring to ensure release stability and production visibility.
+\end{itemize}
+
+
+\textbf{React Native App Developer (Contract)} \\
+\textit{Tekora Labs — MeraNivas} \hfill Feb 2025 -- Dec 2025 | Remote
+% \begin{itemize}
+%     \item Owned end-to-end development of a \textbf{multi-role society management platform} (Super Admin, Admin, Residents, Security/Helpers) across \textbf{3 production apps} with shared architecture.
+%     \item Implemented complex \textbf{navigation, notification, and permission flows} spanning finance, subscriptions, complaints, visitors, amenities, parking, and emergency modules.
+%     \item Built \textbf{finance-critical systems} including invoice generation (maintenance \& events), analytics dashboards, budgets, fund settlements, and date-range exports.
+%     \item Designed \textbf{automation and data systems}—subscription reminder cron jobs, attendance and QR-based visitor flows, bulk uploads, and scalable data models supporting audits and historical records.
+% \end{itemize}
+
+\begin{itemize}
+    \item Owned end-to-end development of a \textbf{multi-role society platform} across \textbf{3 production apps}.
+    \item Built navigation, notification, and permission flows for finance, subscriptions, visitors, parking, and emergencies.
+    \item Implemented finance systems: invoicing, analytics, budgets, settlements, and date-range exports.
+    \item Designed automation and data systems for reminders, attendance, QR visitors, bulk uploads, and audits.
+    \item Coordinated releases and schema changes across apps to ensure backward compatibility and data integrity.
+\end{itemize}
+
+
+
+\textbf{App Developer (Contract)} \\
+\textit{Figleo Web Services} \hfill Apr 2024 -- Oct 2024 | Remote
+% \begin{itemize}
+%     \item Built an offline-first visitor management system using AsyncStorage, boosting usage efficiency by \textbf{50\%}.
+%     \item Reduced crash rates by \textbf{25\%} through Redux optimization and enhanced error boundaries.
+%     \item Created QR/Barcode attendance scanner cutting check-in time by \textbf{70\%}.
+% \end{itemize}
+
+\begin{itemize}
+    \item Built an offline-first visitor system using AsyncStorage, improving efficiency by \textbf{50\%}.
+    \item Reduced app crashes by \textbf{25\%} through Redux optimization and error handling.
+    \item Developed QR/Barcode attendance scanning, reducing check-in time by \textbf{70\%}.
+\end{itemize}
+
+
+% \textbf{Cybersecurity Intern} \\
+% \textit{Gurugram Police Cyber Cell} \hfill Jun 2024 -- Jul 2024 | Gurugram
+% \begin{itemize}
+%     \item Contributed to solving \textbf{5 major cyber fraud cases} via digital forensics.
+%     \item Performed threat analysis on 20+ devices, accelerating investigation timelines by \textbf{40\%}.
+% \end{itemize}
+
+% ===== PROJECTS =====
+\section*{Projects}
+
+% \textbf{Sarajod} (\href{https://github.com/jxngrx/sarajod_app_main}{GitHub})
+% \hfill React Native, Node.js, MongoDB
+% \begin{itemize}
+%     \item Built a digital ledger app inspired by Khatabook for managing business transactions.
+%     \item Implemented approval workflows similar to GitHub pull requests for multi-role verification.
+% \end{itemize}
+
+\textbf{ERohtak} (\href{https://erohtak.com}{Website})
+\hfill React, RN, Node.js, MongoDB
+\begin{itemize}
+    \item Developed a multi-platform system with \textbf{100+ live business listings}, increasing partner sales by \textbf{20\%}.
+    \item Built responsive UI with Jest test coverage, boosting user engagement by \textbf{35\%}.
+\end{itemize}
+
+\textbf{AI Support SaaS Platform}
+(\href{https://github.com/jxngrx/jkdebug-echo-nextjs}{GitHub})
+\hfill Next.js, Convex, VAPI, Clerk
+\begin{itemize}
+    \item Built B2B AI support system with real-time chat, voice AI, and RAG-based knowledge search.
+    \item Implemented auto-resolution, human escalation, multi-workspaces, and team management.
+    \item Integrated Clerk auth, subscription billing, secure AWS key storage, and an embeddable AI widget.
+\end{itemize}
+
+\textbf{RECHK} (\href{https://rechk.in}{Website})
+\hfill Next.js, PostgreSQL, Python, Hugging Face
+\begin{itemize}
+    \item Built AI-driven research paper evaluation system reducing manual review time by \textbf{80\%}.
+    \item Integrated ML models for plagiarism, grammar, and formatting analysis.
+\end{itemize}
+
+% ===== EDUCATION =====
+\section*{Education}
+\textbf{B.Tech in Computer Science}, Maharshi Dayanand University
+\hfill Expected Jun 2026
+
+% ===== SKILLS & CERTIFICATIONS =====
+\begin{multicols}{2}
+
+\section*{Skills}
+\textbf{Languages:} TypeScript, SQL, JavaScript, Python \\
+\textbf{Frameworks:} MERN Stack, React Native \\
+\textbf{Databases:} Convex DB, PostgreSQL, MongoDB, MySQL \\
+\textbf{Tools \& Platforms:} Git, Docker, Linux, Postman, AWS, GCP, Play Store Deployment, RabbitMQ
+
+\columnbreak
+
+\section*{Certifications}
+Google Cloud Big Data \& ML Fundamentals \\
+Foundations of Cybersecurity (Google) \\
+Programming with JavaScript (Meta) \\
+Modernizing Data Lakes (Google Cloud) \\
+Docker: The Complete Guide
+
+\end{multicols}
+
+\end{document}

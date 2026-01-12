@@ -1,0 +1,215 @@
+---
+title: 'AI Support SaaS Platform'
+description: 'B2B AI support system with real-time chat, voice AI, and RAG-based knowledge search for enterprise customer support automation.'
+image: '/company/figleo.png'
+technologies:
+  ['Next.js', 'Convex', 'VAPI', 'Clerk', 'TypeScript']
+github: 'https://github.com/jxngrx/jkdebug-echo-nextjs'
+live: ''
+timeline: '2 Months'
+role: 'Full Stack Developer'
+team: 'Solo'
+status: 'completed'
+featured: true
+challenges:
+  [
+    'RAG-based knowledge search implementation',
+    'Real-time chat synchronization',
+    'Voice AI integration and optimization',
+    'Multi-workspace architecture',
+    'Secure AWS key storage',
+  ]
+learnings:
+  [
+    'Retrieval-Augmented Generation (RAG) systems',
+    'Real-time chat infrastructure',
+    'Voice AI integration with VAPI',
+    'Multi-tenant SaaS architecture',
+    'Subscription billing integration',
+    'Embeddable widget development',
+  ]
+isPublished: true
+---
+
+# AI Support SaaS Platform: Enterprise Customer Support Automation
+
+## Overview
+
+**AI Support SaaS Platform** is a comprehensive B2B solution designed to revolutionize customer support through intelligent automation. The platform combines real-time chat, voice AI, and RAG-based knowledge search to provide instant, accurate responses while maintaining the option for human escalation when needed.
+
+## Key Features
+
+- **Real-time Chat Interface**: Instant customer support with AI-powered responses
+- **Voice AI Integration**: Voice-to-voice support using VAPI for seamless communication
+- **RAG-based Knowledge Search**: Retrieval-Augmented Generation for accurate, context-aware responses
+- **Auto-resolution**: AI automatically resolves common queries without human intervention
+- **Human Escalation**: Seamless handoff to human agents when needed
+- **Multi-workspace Support**: Manage multiple client workspaces from a single dashboard
+- **Team Management**: Role-based access control and team collaboration features
+- **Embeddable Widget**: Easy integration into existing websites and applications
+- **Subscription Billing**: Integrated billing system for SaaS monetization
+
+## Why I Built This
+
+I built this platform to address the growing need for scalable, intelligent customer support solutions. Traditional support systems require significant human resources, while AI-powered solutions often lack context awareness and accuracy. This platform bridges that gap by combining the best of both worlds—intelligent AI with human oversight.
+
+## Technical Architecture
+
+### Frontend
+
+The frontend is built with modern technologies focused on performance and developer experience:
+
+- **Next.js**: Server-side rendering and optimized performance
+- **TypeScript**: Type-safe development and better code quality
+- **Convex**: Real-time database for instant chat synchronization
+- **Clerk**: Authentication and user management
+
+### Backend & AI Integration
+
+The platform leverages cutting-edge AI and backend technologies:
+
+- **Convex DB**: Real-time database for chat messages and state management
+- **VAPI**: Voice AI integration for voice-to-voice customer support
+- **RAG System**: Retrieval-Augmented Generation for context-aware AI responses
+- **AWS**: Secure key storage and cloud infrastructure
+
+### Key Integrations
+
+- **Clerk Authentication**: Secure user authentication and session management
+- **Subscription Billing**: Integrated payment processing for SaaS subscriptions
+- **AWS Key Management**: Secure storage of API keys and sensitive credentials
+- **Embeddable Widget**: JavaScript widget for easy integration
+
+## Technical Implementation
+
+### RAG-based Knowledge Search
+
+Implemented a Retrieval-Augmented Generation system that:
+
+- Indexes company knowledge bases and documentation
+- Retrieves relevant context before generating AI responses
+- Ensures accurate, company-specific answers
+- Continuously improves through feedback loops
+
+### Real-time Chat Infrastructure
+
+Built a scalable real-time chat system:
+
+- WebSocket connections for instant message delivery
+- Message persistence and history
+- Typing indicators and read receipts
+- Support for file attachments and rich media
+
+### Voice AI Integration
+
+Integrated VAPI for voice support:
+
+- Voice-to-voice conversations with customers
+- Text-to-speech and speech-to-text conversion
+- Real-time audio streaming
+- Multi-language support capabilities
+
+### Multi-workspace Architecture
+
+Designed a scalable multi-tenant system:
+
+- Isolated workspaces for each client
+- Shared infrastructure with data isolation
+- Workspace-specific configurations and branding
+- Centralized admin dashboard
+
+### Embeddable Widget
+
+Developed a JavaScript widget for easy integration:
+
+- One-line script installation
+- Customizable styling and branding
+- Event callbacks for analytics
+- Responsive design for all devices
+
+## Technical Challenges & Solutions
+
+### Challenge 1: RAG System Implementation
+
+- **Problem**: Implementing efficient retrieval and generation that provides accurate, context-aware responses
+- **Solution**: Built a hybrid system combining vector embeddings for semantic search with fine-tuned language models for generation
+
+### Challenge 2: Real-time Chat Synchronization
+
+- **Problem**: Ensuring message consistency across multiple clients and devices
+- **Solution**: Leveraged Convex's real-time capabilities for instant synchronization with conflict resolution
+
+### Challenge 3: Voice AI Latency
+
+- **Problem**: Reducing latency in voice conversations for natural interaction
+- **Solution**: Optimized audio streaming, implemented caching strategies, and used edge deployments
+
+### Challenge 4: Multi-tenant Security
+
+- **Problem**: Ensuring data isolation and security across multiple workspaces
+- **Solution**: Implemented row-level security policies and workspace-scoped data access
+
+### Challenge 5: Embeddable Widget Performance
+
+- **Problem**: Creating a lightweight, performant widget that doesn't impact host site performance
+- **Solution**: Lazy loading, code splitting, and minimal bundle size optimization
+
+## Features Deep Dive
+
+### Auto-resolution System
+
+The platform can automatically resolve a wide range of common customer queries:
+
+- Product information and FAQs
+- Order status and tracking
+- Account management requests
+- Technical troubleshooting
+- Policy and procedure questions
+
+When a query can't be resolved automatically, the system seamlessly escalates to human agents with full context.
+
+### Human Escalation Workflow
+
+When escalation is needed:
+
+1. AI provides a summary of the conversation
+2. Ticket is created with full context
+3. Available agent is notified
+4. Agent can review history and continue seamlessly
+5. Customer experience remains smooth throughout
+
+### Team Management
+
+Comprehensive team features:
+
+- Role-based permissions (Admin, Agent, Viewer)
+- Team member invitations and management
+- Activity logging and analytics
+- Performance metrics per team member
+
+### Subscription Billing
+
+Integrated billing system supports:
+
+- Multiple subscription tiers
+- Usage-based pricing
+- Automated billing cycles
+- Payment method management
+- Invoice generation
+
+## Security & Privacy
+
+- **Secure Key Storage**: AWS Key Management Service for API keys
+- **Data Encryption**: End-to-end encryption for sensitive data
+- **Compliance**: GDPR and SOC 2 compliance considerations
+- **Access Control**: Role-based access control throughout the platform
+
+## Future Enhancements
+
+- Advanced analytics and reporting dashboard
+- Custom AI model training per workspace
+- Integration with popular CRM systems
+- Mobile app for agent management
+- Multi-language support expansion
+- Advanced analytics and conversation insights
+- A/B testing for AI responses

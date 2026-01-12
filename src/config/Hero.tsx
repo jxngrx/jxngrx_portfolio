@@ -125,9 +125,9 @@ export const socialLinks = [
     href: 'mailto:shubhamjangrartk@gmail.com',
     icon: <Mail />,
   },
-  {
-    name: 'Portfolio',
-    href: 'https://jxngrx.vercel.app',
-    icon: <Github />, // you can replace with a custom "Globe" or "Portfolio" icon
-  },
+//   {
+//     name: 'Portfolio',
+//     href: 'https://jxngrx.vercel.app',
+//     icon: <Github />, // you can replace with a custom "Globe" or "Portfolio" icon
+//   },
 ];
